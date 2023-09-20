@@ -1,0 +1,17 @@
+#!/bin/bash
+
+file_dir="./files"
+
+cd "$file_dir" || exit
+
+to_lower() {
+    echo "$1" | tr '[:upper:]' '[:lower:]'
+}
+
+for file in *; do
+    first_alph=$(to_lower "${file:0:1}")
+
+    mv "$file" "../$first_alph"
+done
+
+cd - || exit
